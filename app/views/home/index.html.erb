@@ -1,0 +1,10 @@
+<h1>Postcode Checker</h1>
+<p>Please enter your postcode to check if it is allowed</p>
+<%= form_tag check_post_code_path, method: :post do %>
+  <%= label_tag(:q, "Postcode:") %>
+  <%= text_field_tag(:postcode) %>
+  <%= submit_tag("Search") %>
+<% end %>
+<% flash.each do |msg| %>
+  <p class="danger">Result: <%= msg[1] %></p>
+<% end %>
