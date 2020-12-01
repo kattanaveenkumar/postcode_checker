@@ -3,14 +3,15 @@ class PostcodeValidator
 
   API_ENDPOINT = 'https://api.postcodes.io/postcodes'.freeze
   ALLOWED_LSOAS =  %w[Southwark Lambeth].freeze
+  ALLOWED_POSTCODES = ["SH241AA", "SH241AB"].freeze
 
   attr_reader :postcode
   
   def initialize(postcode=nil)
-    @postcode = postcode
+    @postcode = postcode.delete(' ').downcase
   end
 
-  def by_postcode
+  def call
     request(
       http_method: :get,
       endpoint: "#{API_ENDPOINT}/#{postcode}"
@@ -29,6 +30,9 @@ class PostcodeValidator
   def request(http_method:, endpoint:)
     @response = client.public_send(http_method, endpoint)
     @parsed_response = Oj.load(@response.body)
+
+    return "Post code is allowed" if ALLOWED_POSTCODES.include?(@postcode.upcase)
+
     if response_successful?
       lsoa = JSON.parse(@response.body)['result']['lsoa']
       return ALLOWED_LSOAS.any? {|ls| lsoa.include? ls} ? "Post code is allowed" : 'Post code is not allowed'
