@@ -4,13 +4,7 @@ class HomeController < ApplicationController
   def index; end
 
   def check_post_code
-    post_code = params[:postcode]
-    if post_code.present?
-      response = PostcodeValidator.new(post_code).call
-      flash[:message] = response
-    else
-      flash[:message] = 'Post Code cannot be blank'
-    end
+    flash[:message] = PostcodeValidator.new(params[:postcode]).call
     redirect_to root_url
   end
 end
