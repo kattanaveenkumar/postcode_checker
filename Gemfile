@@ -13,6 +13,7 @@ gem 'puma', '~> 4.1'
 gem 'faraday'
 gem 'oj'
 
+gem 'simplecov', require: false, group: :test
 gem 'rspec-rails', '~> 3.5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
