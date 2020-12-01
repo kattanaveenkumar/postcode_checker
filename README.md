@@ -34,6 +34,11 @@ __Install gems:__
 
 		bundle install
 
+__DB setup:__ 
+
+- run the following commands to setup the db for application
+
+		rake db:create db:migrate
 
 __Running the application locally:__
 
