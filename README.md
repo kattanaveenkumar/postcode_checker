@@ -61,7 +61,6 @@ Run unit tests:
 
 The test coverage of code is as shown below
 
-![https://github.com/kattanaveenkumar/postcode_checker/raw/master/public/coverage.png](https://github.com/kattanaveenkumar/rewards_system/raw/master/public/coverage.png)
 ![http://localhost:3000/coverage.png](http://localhost:3000/coverage.png)
  	
 Visit [http://localhost:3000/coverage/index.html#_AllFiles](http://localhost:3000/coverage/index.html)
